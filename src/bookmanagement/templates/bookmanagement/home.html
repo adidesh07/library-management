@@ -1,0 +1,15 @@
+{% extends "bookmanagement/index.html" %} {% load static %} {% block main_content %}
+
+<div class="d-flex justify-content-between mt-5">
+  <p class="h5 ml-5">Home</p>
+  <a class="mr-5" href="{% url 'logout' %}">Logout</a>
+</div>
+
+{% if request.user.is_end_user %}
+<a href={% url 'bookmanagement:borrow_book' %}>Borrow Books</a>
+<a>Current Borrow List</a>
+{% else %}
+<a href="{% url 'bookmanagement:book_inventory' %}">Book Inventory</a>
+<a href="{% url 'bookmanagement:create_book' %}">Add Book</a>
+
+{% endif %} {% endblock main_content %}
